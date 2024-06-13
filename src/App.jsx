@@ -3,6 +3,8 @@ import "./App.css";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
+import { nanoid } from "nanoid";
+import { useLocalStorage } from "./helpers/useLocalStorage";
 
 function App() {
   const defContacts = [
@@ -12,14 +14,32 @@ function App() {
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ];
 
-  const [contacts, setContacts] = useState(defContacts);
+  const [contacts, setContacts] = useLocalStorage("contacts", defContacts);
+  const [filter, setFilter] = useState("");
+
+  const addContact = (name, number) => {
+    const contactObj = {
+      id: nanoid(),
+      name,
+      number,
+    };
+    setContacts((prev) => [...prev, contactObj]);
+  };
+
+  const handleFilter = (e) => {
+    setFilter(e.target.value);
+  };
+
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList contacts={contacts} />
+      <ContactForm addContact={addContact} />
+      <SearchBox handleFilter={handleFilter} />
+      <ContactList contacts={filteredContacts} />
     </>
   );
 }

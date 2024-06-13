@@ -3,9 +3,16 @@ import Contact from "../Contact/Contact";
 
 const ContactList = ({ contacts }) => {
   return (
-    <div>
-      <Contact contacts={contacts} />
-    </div>
+    <ul>
+      {contacts.map((contact) => (
+        <Contact
+          name={contact.name}
+          id={contact.id}
+          number={contact.number}
+          key={contact.id}
+        />
+      ))}
+    </ul>
   );
 };
 export default ContactList;
