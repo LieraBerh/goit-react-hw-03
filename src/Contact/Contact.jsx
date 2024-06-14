@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-const Contact = ({ id, name, number }) => {
+const Contact = ({ id, name, number, handleDelete }) => {
   return (
-    <li>
+    <li key={id}>
       <p>{name}</p>
       <p>{number}</p>
-      <button>Delete</button>
+      <button onClick={() => handleDelete(id)}>Delete</button>
     </li>
   );
 };

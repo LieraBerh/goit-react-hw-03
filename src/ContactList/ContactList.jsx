@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Contact from "../Contact/Contact";
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, handleDelete }) => {
   return (
     <ul>
       {contacts.map((contact) => (
@@ -10,6 +10,7 @@ const ContactList = ({ contacts }) => {
           id={contact.id}
           number={contact.number}
           key={contact.id}
+          handleDelete={handleDelete}
         />
       ))}
     </ul>
