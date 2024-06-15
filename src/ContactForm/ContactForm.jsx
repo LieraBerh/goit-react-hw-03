@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import s from "./ContactForm.module.css";
 
 const ContactForm = ({ addContact }) => {
   const handleSubmit = (values, { resetForm }) => {
@@ -30,19 +31,23 @@ const ContactForm = ({ addContact }) => {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form className="form">
-        <label className="label">
+      <Form className={s.form}>
+        <label className={s.label}>
           <span>Name</span>
-          <Field name="name" placeholder="Enter name" className="input" />
-          <ErrorMessage name="name" component="span" className="errorMsg" />
+          <Field name="name" placeholder="Enter name" className={s.input} />
+          <ErrorMessage name="name" component="span" className={s.error__msg} />
         </label>
-        <label className="label">
+        <label className={s.label}>
           <span>Number</span>
-          <Field name="number" placeholder="Enter number" className="input" />
-          <ErrorMessage name="number" component="span" className="errorMsg" />
+          <Field name="number" placeholder="Enter number" className={s.input} />
+          <ErrorMessage
+            name="number"
+            component="span"
+            className={s.error__msg}
+          />
         </label>
-        <button className="submitBtn" type="submit">
-          Add Contact
+        <button className={s.submit__btn} type="submit">
+          add contact
         </button>
       </Form>
     </Formik>
