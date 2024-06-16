@@ -40,11 +40,6 @@ function App() {
 
   return (
     <>
-      <div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-      </div>
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
       <SearchBox handleFilter={handleFilter} />

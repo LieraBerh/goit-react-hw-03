@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
+import s from "./SearchBox.module.css";
+
 const SearchBox = ({ handleFilter }) => {
   return (
-    <div>
+    <div className={s.search_box}>
       Find contacts by name
-      <input type="text" onChange={handleFilter} />
+      <input
+        type="text"
+        onChange={handleFilter}
+        className={s.search_box__input}
+      />
     </div>
   );
 };
